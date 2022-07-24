@@ -1,0 +1,16 @@
+Resources:
+  VehicleToHandheldTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: VehicleToHandheldTable
+      AttributeDefinitions:
+        - AttributeName: vehicleId
+          AttributeType: S
+        - AttributeName: handheldId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: vehicleId
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

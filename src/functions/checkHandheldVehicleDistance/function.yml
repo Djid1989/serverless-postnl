@@ -1,0 +1,12 @@
+checkHandheldVehicleDistance:
+  handler: ./src/functions/checkHandheldVehicleDistance/handler.checkHandheldVehicleDistance
+  dependsOn:
+    - GpsCoordinatesTable
+  events: 
+    - stream:
+        type: dynamodb
+        arn:
+          Fn::GetAtt:
+            - GpsCoordinatesTable
+            - StreamArn
+        batchSize: 1

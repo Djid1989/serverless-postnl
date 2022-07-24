@@ -7,6 +7,7 @@ plugins:
   
 provider: 
   name: 'aws'
+  region: 'eu-west-1'
   runtime: 'nodejs14.x'
   apiGateway: 
     minimumCompressionSize: 1024
@@ -15,10 +16,16 @@ provider:
   environment: 
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
     NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000'
-  
+
+resources: 
+  - ${file(./infra/sqs/gpsCoordinatesQueue.yml)}
+  - ${file(./infra/sns/iotPlatformNotificationsTopic.yml)}
+  - ${file(./infra/dynamodb/gpsCoordinatesTable.yml)}
+  - ${file(./infra/dynamodb/vehicleToHandheldTable.yml)}
+
 functions:
-  hello:
-    handler: ./src/functions/hello/handler.hello
+  - ${file(./src/functions/saveLocation/function.yml)}
+  - ${file(./src/functions/checkHandheldVehicleDistance/function.yml)}
 
 package:  
   individually: true 

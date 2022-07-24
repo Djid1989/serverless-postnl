@@ -1,0 +1,3 @@
+Resources: 
+  GpsCoordinatesQueue:
+    Type: AWS::SQS::Queue 

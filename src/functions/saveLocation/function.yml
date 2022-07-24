@@ -1,0 +1,11 @@
+saveLocation:
+  handler: ./src/functions/saveLocation/handler.saveLocation
+  dependsOn:
+    - GpsCoordinatesQueue
+  events: 
+    - sqs:
+        arn:
+          Fn::GetAtt:
+            - GpsCoordinatesQueue
+            - Arn
+        batchSize: 1
