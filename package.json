@@ -15,6 +15,7 @@
     "@middy/core": "^2.5.3",
     "@middy/http-json-body-parser": "^2.5.3",
     "aws-sdk": "^2.1181.0",
+    "serverless-offline-sns": "^0.76.0",
     "serverless-offline-sqs": "^6.0.0"
   },
   "devDependencies": {
