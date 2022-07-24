@@ -2,6 +2,7 @@ checkHandheldVehicleDistance:
   handler: ./src/functions/checkHandheldVehicleDistance/handler.checkHandheldVehicleDistance
   dependsOn:
     - GpsCoordinatesTable
+    - IotPlatformNotificationsTopic
   events: 
     - stream:
         type: dynamodb
@@ -10,3 +11,11 @@ checkHandheldVehicleDistance:
             - GpsCoordinatesTable
             - StreamArn
         batchSize: 1
+  iamRoleStatements: 
+    - Effect: Allow
+      Action: 
+        - sns:Publish
+      Resource: '*'
+  environment: 
+    IOT_NOTIFICATIONS_TOPIC: !GetAtt IotPlatformNotificationsTopic.Arn
+

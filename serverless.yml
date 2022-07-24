@@ -2,8 +2,6 @@ service: 'serverless-postnl'
 frameworkVersion: '3'
 plugins:
   - serverless-esbuild
-  - serverless-offline
-  - serverless-offline-sqs
   
 provider: 
   name: 'aws'

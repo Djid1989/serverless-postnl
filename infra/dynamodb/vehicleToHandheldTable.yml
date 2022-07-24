@@ -4,13 +4,15 @@ Resources:
     Properties:
       TableName: VehicleToHandheldTable
       AttributeDefinitions:
-        - AttributeName: vehicleId
+        - AttributeName: vehicleMacAddress
           AttributeType: S
-        - AttributeName: handheldId
+        - AttributeName: handheldMacAddress
           AttributeType: S
       KeySchema:
-        - AttributeName: vehicleId
+        - AttributeName: vehicleMacAddress
           KeyType: HASH
+        - AttributeName: handheldMacAddress
+          KeyType: RANGE
       ProvisionedThroughput:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
