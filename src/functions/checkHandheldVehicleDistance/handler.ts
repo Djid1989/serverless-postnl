@@ -22,14 +22,12 @@ const checkHandheldVehicleDistance: DynamoDBStreamHandler = async (event: Dynamo
   }
 
   // find matching device
-
   const matchingDevice = await handheldVehicleTable.getHandheldVehicleCombo({
     handheldMacAddress: deviceLocation.type === 'handheld' ? macAddress : undefined,
     vehicleMacAddress: deviceLocation.type === 'vehicle' ? macAddress : undefined,
   })
 
   // find location of matching device
-
   const otherDeviceLocation = await gpsCoordinatesTable.getLocation((deviceLocation.type === 'handheld' ?
     matchingDevice.vehicleMacAddress :
     matchingDevice.handheldMacAddress) as string)
