@@ -1,0 +1,16 @@
+Resources:
+  GpsCoordinatesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: GpsCoordinatesTable
+      AttributeDefinitions:
+        - AttributeName: macAddress
+          AttributeType: S
+      KeySchema:
+        - AttributeName: macAddress
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
+      StreamSpecification:
+        StreamViewType: NEW_IMAGE

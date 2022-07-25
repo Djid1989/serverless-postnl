@@ -1,0 +1,20 @@
+Resources:
+  # TODO: this table should actually have two nested objects, that both have a macAddress 
+  # To make development easier in other parts.
+  VehicleToHandheldTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: VehicleToHandheldTable
+      AttributeDefinitions:
+        - AttributeName: vehicleMacAddress
+          AttributeType: S
+        - AttributeName: handheldMacAddress
+          AttributeType: S
+      KeySchema:
+        - AttributeName: vehicleMacAddress
+          KeyType: HASH
+        - AttributeName: handheldMacAddress
+          KeyType: RANGE
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

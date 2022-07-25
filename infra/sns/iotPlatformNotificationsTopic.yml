@@ -1,0 +1,7 @@
+Resources: 
+  IotPlatformNotificationsTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+      - Endpoint: jongdidide@gmail.com
+        Protocol: email
