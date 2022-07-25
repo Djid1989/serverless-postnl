@@ -1,3 +1,3 @@
 # Design
 
-![Design](./docs/Design%20PostNL%20assignment.jpg)
+![Design](./Design%20PostNL%20assignment.jpg)
