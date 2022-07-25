@@ -1,0 +1,33 @@
+[
+    {
+        "macAddress": "VV:AA:AA:AA:01",
+        "type": "vehicle",
+        "gpsCoordinate" : { "lat": 52.0634464, "long" : 4.2708485 }
+    },
+    {
+        "macAddress": "HH:BB:BB:BB:01",
+        "type": "handheld",
+        "gpsCoordinate" : { "lat": 52.0635891, "long" : 4.2718365 }
+    },
+    {
+        "macAddress": "VV:AA:AA:AA:02",
+        "type": "vehicle",
+        "gpsCoordinate" : { "lat": 52.0634464, "long" : 4.2708485 }
+    },
+    {
+        "macAddress": "HH:BB:BB:BB:02",
+        "type": "handheld",
+        "gpsCoordinate" : { "lat": 52.066501, "long" : 4.2708241 }
+    },
+    {
+        "macAddress": "VV:AA:AA:AA:03",
+        "type": "vehicle",
+        "gpsCoordinate" : { "lat": 52.0634464, "long" : 4.2708485 }
+    },
+    {
+        "macAddress": "HH:BB:BB:BB:03",
+        "type": "handheld",
+        "gpsCoordinate" : { "lat": 52.0665053, "long" : 4.2705818 }
+    }
+
+]

@@ -1,4 +1,6 @@
 Resources:
+  # TODO: this table should actually have two nested objects, that both have a macAddress 
+  # To make development easier in other parts.
   VehicleToHandheldTable:
     Type: AWS::DynamoDB::Table
     Properties:

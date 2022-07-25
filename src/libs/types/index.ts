@@ -1,8 +1,13 @@
-export interface GpsEvent extends GpsLocation {
+export interface DeviceLocation extends GpsLocation {
     type: 'vehicle' | 'handheld';
 }
 
+export interface GpsCoordinate {
+    lat: number;
+    long: number;
+};
+
 export interface GpsLocation {
-    gpsCoordinate: string;
+    gpsCoordinate: GpsCoordinate;
     macAddress: string;
 }

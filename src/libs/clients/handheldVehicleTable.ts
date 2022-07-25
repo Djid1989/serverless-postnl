@@ -1,25 +1,37 @@
-import AWS from 'aws-sdk';
+import { DynamoDB } from 'aws-sdk';
 
 export class HandheldVehicleTable {
 
-    private dynamoDB: AWS.DynamoDB;
+    private dynamoDB: DynamoDB;
 
     constructor() {
-        this.dynamoDB = new AWS.DynamoDB({
+        this.dynamoDB = new DynamoDB({
             region: 'eu-west-1',
         })
     }
 
-    public getHandheldVehicleCombo = async ({handheldMacAddress, vehicleMacAddress}: { handheldMacAddress?: string; vehicleMacAddress?: string;}) => {
-        
-        const handheldVehicleCombo = await this.dynamoDB.getItem({
-            TableName: 'VehicleToHandheldTable',
-            Key: {
-                ...(handheldMacAddress ? {'handheldMacAddress': { S: handheldMacAddress }}: {}),
-                ...(vehicleMacAddress ? {'vehicleMacAddress': { S: vehicleMacAddress }}: {}),
-            }
-        }).promise()
+    public getHandheldVehicleCombo = async ({ handheldMacAddress, vehicleMacAddress }: { handheldMacAddress?: string; vehicleMacAddress?: string; }) => {
 
-        return handheldVehicleCombo
+        // Jeez, this is ugly. TODO: find a way to query by what is there in dynamodb. 
+        // Utility method that adds properties to KeyConditionExpression that are given or st?
+        const handheldParams: AWS.DynamoDB.QueryInput = {
+            TableName: 'VehicleToHandheldTable',
+            KeyConditionExpression: "handheldMacAddress = :handheldMacAddress",
+            ExpressionAttributeValues: {
+                ':handheldMacAddress': { S: handheldMacAddress },
+            },
+        }
+
+        const vehiclepParams: AWS.DynamoDB.QueryInput = {
+            TableName: 'VehicleToHandheldTable',
+            KeyConditionExpression: "vehicleMacAddress = :vehicleMacAddress",
+            ExpressionAttributeValues: {
+                ':vehicleMacAddress': { S: vehicleMacAddress },
+            },
+        }
+
+        const handheldVehicleCombo = await this.dynamoDB.query(handheldMacAddress ? handheldParams : vehiclepParams).promise()
+
+        return DynamoDB.Converter.unmarshall(handheldVehicleCombo.Items[0]);
     }
 }

@@ -1,0 +1,27 @@
+[
+    {
+        "vehicleMacAddress": {
+          "S": "VV:AA:AA:AA:01"
+        },
+        "handheldMacAddress": {
+          "S": "HH:BB:BB:BB:01"
+        }
+      },
+      {
+        "vehicleMacAddress": {
+          "S": "VV:AA:AA:AA:02"
+        },
+        "handheldMacAddress": {
+          "S": "HH:BB:BB:BB:02"
+        }
+      },
+      {
+        "vehicleMacAddress": {
+          "S": "VV:AA:AA:AA:03"
+        },
+        "handheldMacAddress": {
+          "S": "HH:BB:BB:BB:03"
+        }
+      }
+
+]

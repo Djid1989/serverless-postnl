@@ -16,6 +16,10 @@ checkHandheldVehicleDistance:
       Action: 
         - sns:Publish
       Resource: '*'
+    - Effect: Allow
+      Action: 
+        - dynamodb:*
+      Resource: '*'
   environment: 
-    IOT_NOTIFICATIONS_TOPIC: !GetAtt IotPlatformNotificationsTopic.Arn
+    IOT_NOTIFICATIONS_TOPIC: !Ref IotPlatformNotificationsTopic
 

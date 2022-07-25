@@ -9,3 +9,8 @@ saveLocation:
             - GpsCoordinatesQueue
             - Arn
         batchSize: 1
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - dynamodb:PutItem
+      Resource: '*'
